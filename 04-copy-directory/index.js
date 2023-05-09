@@ -3,6 +3,9 @@ const path = require('node:path');
 
 const newFilePath = path.resolve(__dirname, 'files-copy');
 
+function copyDir(oldFilePath , newFilePath){
+
+fs.rm(newFilePath, {force: true, recursive: true}, () => {    
 fs.mkdir(newFilePath, () => {
     fs.readdir(path.resolve(__dirname, 'files'), (error, files) => {
         files.forEach(el => {
@@ -16,3 +19,6 @@ fs.mkdir(newFilePath, () => {
         })
     }) 
 })
+})}
+
+copyDir(path.resolve(__dirname, 'files'), newFilePath)
